@@ -37,17 +37,46 @@ public class TreePanel extends JPanel implements ActionListener {
 	private Polygon tree;
 	private int[] xArr = {MID_X, MID_X+60, MID_X+30,MID_X+120, MID_X+80, MID_X+180, 
 			MID_X-180, MID_X-80, MID_X-120, MID_X-30, MID_X-60};
+
 	private int[] yArr = {TOP_Y, TOP_Y+80, TOP_Y+80, TOP_Y+160, TOP_Y+160, TOP_Y+240, 
 			TOP_Y+240, TOP_Y+160, TOP_Y+160, TOP_Y+80, TOP_Y+80};
+
+
+
+
+
+
+
+
+
 	private ArrayList<Ornament> orns;
-	private JButton blueButton = new JButton("Yellow");
+	private JButton yellowButton = new JButton("Yellow");
 	private JButton redButton = new JButton("Red");
-	private JButton startButton = new JButton("Start"); //button to start light show
+	private JButton orangeButton = new JButton("Orange");
+	
+	private JButton startButton1 = new JButton("B-Yellow"); //button to start light show
+	private boolean blink = false;
+	private Timer timer;
+	private int delay = 300; //200 milliseconds
+
+	private JButton startButton2 = new JButton("B-Red"); //button to start light show
+	private boolean blink = false;
+	private Timer timer;
+	private int delay = 300; //200 milliseconds
+
+	private JButton startButton3 = new JButton("B-Orange"); //button to start light show
+	private boolean blink = false;
+	private Timer timer;
+	private int delay = 300; //200 milliseconds
+
+
+
+
 	private JButton stopButton = new JButton("Stop"); //button to stop light show
 	private JButton resetButton = new JButton("Reset"); //button to reset the tree panel
 	private boolean blink = false;
 	private Timer timer;
-	private int delay = 500; //200 milliseconds
+	private int delay = 300; //200 milliseconds
 
 	public TreePanel() {
 		orns = new ArrayList<Ornament>();
@@ -56,20 +85,35 @@ public class TreePanel extends JPanel implements ActionListener {
 		
 		timer = new Timer(delay, this); //creates timer for the light show
 		
-	    blueButton.addActionListener(this);
-	    blueButton.setBackground(Color.yellow);
-	    blueButton.setOpaque(true);
-	    add(blueButton,BorderLayout.NORTH);
+	    yellowButton.addActionListener(this);
+	    yellowButton.setBackground(Color.yellow);
+	    yellowButton.setOpaque(true);
+	    add(yellowButton,BorderLayout.NORTH);
 	    
 	    redButton.addActionListener(this);
 	    redButton.setBackground(Color.red);
 	    redButton.setOpaque(true);
 	    add(redButton,BorderLayout.NORTH);
+
+	    orangeButton.addActionListener(this);
+	    orangeButton.setBackground(Color.orange);
+	    orangeButton.setOpaque(true);
+	    add(orangeButton,BorderLayout.NORTH);
 	    
-	    startButton.addActionListener(this);
-	    startButton.setBackground(Color.green);
-	    startButton.setOpaque(true);
-	    add(startButton,BorderLayout.NORTH);
+	    startButton1.addActionListener(this);
+	    startButton1.setBackground(Color.yellow);
+	    startButton1.setOpaque(true);
+	    add(startButton1,BorderLayout.NORTH);
+
+	    startButton2.addActionListener(this);
+	    startButton2.setBackground(Color.red);
+	    startButton2.setOpaque(true);
+	    add(startButton2,BorderLayout.NORTH);
+
+	    startButton3.addActionListener(this);
+	    startButton3.setBackground(Color.orange);
+	    startButton3.setOpaque(true);
+	    add(startButton3,BorderLayout.NORTH);
 	    
 	    stopButton.addActionListener(this);
 	    stopButton.setBackground(Color.orange);
@@ -81,7 +125,7 @@ public class TreePanel extends JPanel implements ActionListener {
 	    resetButton.setOpaque(true);
 	    add(resetButton,BorderLayout.NORTH);
 	    
-	    setBackground (Color.yellow);
+	    setBackground (Color.white);
 	    setPreferredSize (new Dimension(600, 500));
 	 }
 	
@@ -116,13 +160,22 @@ public class TreePanel extends JPanel implements ActionListener {
 	
 	public void actionPerformed(ActionEvent event) {
 		Object source = event.getSource();
-		if (source == blueButton){
+		if (source == yellowButton){
 			clr = Color.yellow;
 		}
 		if (source == redButton){
 			clr = Color.red;
 		}
-		if (source == startButton){
+		if (source == orangeButton){
+			clr = Color.orange;
+		}
+		if (source == startButton1){
+			timer.start();
+		}
+		if (source == startButton2){
+			timer.start();
+		}
+		if (source == startButton3){
 			timer.start();
 		}
 		if (source == stopButton){
@@ -163,3 +216,5 @@ public class TreePanel extends JPanel implements ActionListener {
 	}	
 		
 }
+
+
